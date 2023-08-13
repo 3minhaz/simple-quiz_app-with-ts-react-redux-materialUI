@@ -64,16 +64,26 @@ const QuestionCard: React.FC = () => {
   });
 
   if (isLoading) {
-    return <CircularProgress color="secondary" />;
+    return (
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+        <CircularProgress color="secondary" />
+      </Box>
+    );
   }
 
   const correctAnswer = userAnswer?.filter((elem) => elem.correct === true);
 
   return (
     <Box
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
     >
-      <Box>
+      <Box sx={{ maxWidth: "1200px", width: "500px" }}>
         {!gameOver && !loading && (
           <>
             {" "}
