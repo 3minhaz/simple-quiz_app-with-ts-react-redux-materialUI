@@ -16,6 +16,11 @@ import {
 } from "../redux/features/quiz/quizSlice";
 import CustomizedDialogs from "./modal";
 
+const multipleChoiceSelect = {
+  backgroundColor: "green",
+  color: "white",
+};
+
 const QuestionCard: React.FC = () => {
   const dispatch = useAppDispatch();
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -93,8 +98,8 @@ const QuestionCard: React.FC = () => {
                       })
                     );
                   }}
-                  className={
-                    selectedAnswer === question ? "selected-answer" : ""
+                  style={
+                    selectedAnswer === question ? multipleChoiceSelect : {}
                   }
                   key={index}
                   variant="body1"
