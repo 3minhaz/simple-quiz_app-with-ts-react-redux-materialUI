@@ -27,6 +27,7 @@ export interface DialogTitleProps {
 
 interface PropsObject {
   userAnswer: AnswerObject[];
+  score: number;
 }
 
 function BootstrapDialogTitle(props: DialogTitleProps) {
@@ -56,7 +57,7 @@ function BootstrapDialogTitle(props: DialogTitleProps) {
 export default function CustomizedDialogs(props: PropsObject) {
   const [open, setOpen] = React.useState(false);
   const [number, setNumber] = React.useState(0);
-  const { userAnswer } = props;
+  const { userAnswer, score } = props;
   console.log(userAnswer);
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,6 +81,12 @@ export default function CustomizedDialogs(props: PropsObject) {
           onClose={handleClose}
         >
           Your answer details
+        </BootstrapDialogTitle>
+        <BootstrapDialogTitle
+          id="customized-dialog-title"
+          onClose={handleClose}
+        >
+          You score is {score}/10
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>

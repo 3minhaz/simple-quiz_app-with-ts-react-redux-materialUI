@@ -19,6 +19,7 @@ import CustomizedDialogs from "./modal";
 const multipleChoiceSelect = {
   backgroundColor: "green",
   color: "white",
+  padding: "5px",
 };
 
 const QuestionCard: React.FC = () => {
@@ -66,20 +67,22 @@ const QuestionCard: React.FC = () => {
     return <CircularProgress color="secondary" />;
   }
 
-  return (
-    <Box component="span">
-      <Box>
-        {/* QuestionCard */}
+  const correctAnswer = userAnswer?.filter((elem) => elem.correct === true);
 
+  return (
+    <Box
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+    >
+      <Box>
         {!gameOver && !loading && (
           <>
             {" "}
             <Typography variant="body1" gutterBottom>
               Question: {number + 1} / 10
             </Typography>
-            <Typography variant="body1" gutterBottom>
-              Score
-            </Typography>
+            {/* <Typography variant="body1" gutterBottom>
+              Score: {correctAnswer.length}
+            </Typography> */}
             <Typography variant="h5" gutterBottom>
               {questions2[number]?.question}
             </Typography>
@@ -132,7 +135,10 @@ const QuestionCard: React.FC = () => {
                   Play again{" "}
                 </Button>
 
-                <CustomizedDialogs userAnswer={userAnswer}></CustomizedDialogs>
+                <CustomizedDialogs
+                  score={correctAnswer.length}
+                  userAnswer={userAnswer}
+                ></CustomizedDialogs>
               </Box>
             )}
           </>
